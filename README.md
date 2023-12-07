@@ -12,8 +12,13 @@ Here is the [link to the presentation](https://github.com/ishaanjav/PESS-Protein
 Below are descriptions of the core files in this project:
 - **`Testing.ipynb`**: Implements text index, ESM index, and text-to-ESM index search functions and provides all necessary code to issue queries and display results
 - **`data.csv`**: Contains Accession, Name, Sequence, Description, and more for 16,985 *mus musculus* proteins.
+
+### Vector Embedding folder
+Contains the code for generating text embeddings and ESM embeddings given `data.csv`. Also contains code to upsert the vectors to search indices in Pinecone.
 - **`text_embedder.py`**: Python program that uses OpenAI's API for the Ada text embedding model to embed the 14,871 protein descriptions in `data.csv` and creates a new CSV called `text_embeddings.csv` with a column called `ada_embedding` containing 1536-dimensional vectors.
 - **`esm_embedder.py`**: Python program that uses Meta's open-sourced ESM model to embed amino acid sequences for all the proteins in `data.csv`. It creates a new CSV called `esm_embeddings.csv` with a column called "esm_650M_embedding", containing 1280-dimensional vectors.
+- **`pinecone_upserter.py`**: Python program to upsert vectors (either ESM or text) to Pinecone search index. It includes as metadata, the protein's name and text description.
+
 
 ### Text to ESM Transforms folder
 This folder contains the code for learning a transformation matrix that can be matrix multiplied with a text embedding vector to approximate an ESM embedding vector. `V.npy` and `V_pseudoinv.py` contain the learned matrices and can be loaded using `numpy`.

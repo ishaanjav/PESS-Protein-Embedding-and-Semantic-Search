@@ -32,4 +32,4 @@ df = pd.read_csv('data.csv')
 
 df['ada_embedding'] = df['Description'].apply(
     lambda x: get_embedding(x, model='text-embedding-ada-002'))
-df.to_csv('text_embeddings.csv', index=False)
+df.to_csv('../text_embeddings.csv', index=False)

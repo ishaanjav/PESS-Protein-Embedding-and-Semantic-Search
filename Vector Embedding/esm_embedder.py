@@ -59,4 +59,4 @@ df = pd.read_csv('data.csv')
 
 df['esm_650M_embedding'] = df['Sequence'].apply(
     lambda x: get_embedding(x))
-df.to_csv('esm_embeddings.csv', index=False)
+df.to_csv('../esm_embeddings.csv', index=False)
